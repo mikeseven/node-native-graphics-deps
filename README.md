@@ -1,9 +1,64 @@
 # node-native-graphics-deps
-Precompiled MS-Windows libraries used in node-glfw, node-webgl, node-webcl:
+Precompiled Microsft Windows 8.x and 10.x 64-bit libraries used in node-glfw, node-webgl, node-webcl:
 - precompiled with Visual Studio 2015, for x64 Windows
 - GLFW: [https://github.com/glfw/glfw]
 - GLEW: [https://github.com/nigels-com/glew.git]
 - FreeImage [http://freeimage.sourceforge.net/download.html]
 - AntTweakBar [http://sourceforge.net/projects/anttweakbar/]
+
+The following instructions explain how I make these libraries on Windows 8 or 10 x64, Linux x64, Mac OSX 10.x or 11.x x64.
+
+Mac builds
+----------
+Use Homebrew
+```
+brew install glfw3 anttweakbar glew
+```
+
+Linux builds
+------------
+Use apt-get or similar package manager
+```
+sudo apt-get install libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev
+```
+
+Download AntTweakBar
+```
+cd AntTweakBar/src
+make
+sudo cp ../include/* /usr/local/include
+sudo cp ../liblibAntTweakBar.* /usr/local/lib
+```
+
+Download GLFW3 (do not use ```apt-get install libglfw-dev```, it is wrong version)
+```
+cd glfw
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
+Windows builds
+--------------
+I use Microsoft Visual Studio (MSVS) 2013 and now 2015 x64 and cmake to generate MSVS solutions and projects.
+
+- Download GLEW binaries latest version.
+  - ```include\``` contains headers
+  - ```lib\Release\x64``` contains libraries
+- Download FreeImage binaries latest version. 
+  - ```Dist\x64``` contains headers and libraries
+- Download AntTweakBar, run src\AntTweakBar_VS2012.sln
+  - ```include\``` contains header
+  - ```lib\``` contains the libraries
+- Download GLFW 3.x
+  - do as for Linux above using cmake GUI, which will generate build\GLFW.sln to use with MSVS.
+  - ```include\``` contains headers
+  - ```build\src\Release\``` contains libraries
+
+Now you should have exactly the same headers and libraries as in this repository. You can overwrite headers and libraries (.lib only) with the newly built versions and rebuild node-glfw, node-webgl, node-webcl (using ```node-gyp rebuild``` in each project).
+
+For runtime, don't forget to copy the DLLs of these projects (and only .dll) into your Windows\System32 folder. Now samples and tests in node-glfw, node-webgl, node-webcl will run as well as your applications using these modules.
 
 
