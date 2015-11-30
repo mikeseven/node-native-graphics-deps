@@ -57,6 +57,8 @@ I use Microsoft Visual Studio (MSVS) 2013 and now 2015 x64 and cmake to generate
   - ```include\``` contains headers
   - ```build\src\Release\``` contains libraries
 
+Note that for AntTweakBar and GLFW, you can also use msbuild from Visual Studio x64 command prompt: ```msbuild xxx.sln /t:Rebuild /p:Configuration=Release /m``` with xxx.sln being AntTweakBar_VS2012.sln or GLFW.sln.
+
 Now you should have exactly the same headers and libraries as in this repository. You can overwrite headers and libraries (.lib only) with the newly built versions and rebuild node-glfw, node-webgl, node-webcl (using ```node-gyp rebuild``` in each project).
 
 For runtime, don't forget to copy the DLLs of these projects (and only .dll) into your Windows\System32 folder. Now samples and tests in node-glfw, node-webgl, node-webcl will run as well as your applications using these modules.
