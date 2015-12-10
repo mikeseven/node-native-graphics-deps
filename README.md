@@ -1,10 +1,12 @@
 # node-native-graphics-deps
-Precompiled Microsft Windows 8.x and 10.x 64-bit libraries used in node-glfw, node-webgl, node-webcl:
+Precompiled Microsft Windows 8.x and 10.x 64-bit libraries with Microsoft Visual Studio 2015 x64 used in node-glfw, node-webgl, node-webcl:
 - precompiled with Visual Studio 2015, for x64 Windows
 - GLFW: [https://github.com/glfw/glfw]
 - GLEW: [https://github.com/nigels-com/glew.git]
 - FreeImage [http://freeimage.sourceforge.net/download.html]
 - AntTweakBar [http://sourceforge.net/projects/anttweakbar/]
+
+To use these pre-built binaries, make sure Microsoft Visual Studio 2015 runtime is installed (e.g. Express or Profesional version).
 
 The following instructions explain how I make these libraries on Windows 8 or 10 x64, Linux x64, Mac OSX 10.x or 11.x x64.
 
