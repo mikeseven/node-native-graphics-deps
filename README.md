@@ -10,13 +10,17 @@ The following instructions explain how I make these libraries on Windows 8 or 10
 
 Mac builds
 ----------
-Use Homebrew
+Install latest Xcode.
+
+Install Homebrew
 ```
 brew install glfw3 anttweakbar glew
 ```
 
 Linux builds
 ------------
+Make sure gcc or clang compilers are installed.
+
 Use apt-get or similar package manager
 ```
 sudo apt-get install libxrandr-dev libxinerama-dev libxcursor-dev libfreeimage-dev libglew-dev
@@ -42,7 +46,7 @@ sudo make install
 
 Windows builds
 --------------
-I use Microsoft Visual Studio (MSVS) 2013 and now 2015 x64 and cmake to generate MSVS solutions and projects.
+Make sure Microsoft Visual Studio (MSVS) 2013 x64 or later are installed as well as cmake to generate MSVS solutions and projects.
 
 - Download GLEW binaries latest version.
   - ```include\``` contains headers
